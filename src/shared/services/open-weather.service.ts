@@ -16,7 +16,7 @@ export class OpenWeatherService implements OnModuleDestroy {
         return interval(5000)
             .pipe(
                 switchMap(() => {
-                    return this.httpService.get(weatherURL, {params: {q: locationParam, appid}})
+                    return this.httpService.get(weatherURL, {params: {q: locationParam, appid, units: 'metric'}})
                 }),
                 map(({ data }) => {
                     const currentTime = moment(new Date()).format('HH:mm');
